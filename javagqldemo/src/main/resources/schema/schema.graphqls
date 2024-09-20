@@ -1,0 +1,12 @@
+type Query {
+    coffee(type: CoffeeType): [Coffee]
+}
+
+type Coffee {
+    title: String
+}
+
+enum CoffeeType {
+    HOT
+    ICED
+}
