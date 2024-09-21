@@ -1,9 +1,13 @@
 import {ApolloClient, ApolloProvider as ApolloProviderCore, HttpLink, InMemoryCache} from "@apollo/client";
 import {PropsWithChildren} from "react";
 
+// Base URL of your GraphQL server
+const BASE_URL =
+    process.env.NODE_ENV === 'production' ? 'https://prod-domain.com/grapqhlrn de' : 'http://localhost:8080/graphql';
+
 // Create an HttpLink to define the base URL of your GraphQL server
 const httpLink = new HttpLink({
-  uri: 'http://localhost:8080/graphql', // Base URL of your GraphQL server
+  uri: BASE_URL,
   fetchOptions: {
     mode: 'cors', // Optional, useful for handling CORS if needed
   },
