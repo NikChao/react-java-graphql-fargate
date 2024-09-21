@@ -3,7 +3,8 @@ import * as ecs from 'aws-cdk-lib/aws-ecs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as ecr from 'aws-cdk-lib/aws-ecr';
 import * as ecs_patterns from 'aws-cdk-lib/aws-ecs-patterns';
-import { Construct } from 'constructs';
+import {Construct} from 'constructs';
+import {ApplicationProtocol} from "aws-cdk-lib/aws-elasticloadbalancingv2";
 
 export interface InfraStackProps extends cdk.StackProps {
   repository: ecr.Repository;
@@ -41,7 +42,12 @@ export class InfraStack extends cdk.Stack {
       taskDefinition: taskDefinition,
       desiredCount: 1,
       publicLoadBalancer: true,
-      redirectHTTP: true,
+      /** Uncomment these if you're using a domain name! */
+      // redirectHTTP: true,
+      // protocol: ApplicationProtocol.HTTPS,
+      // domainZone: props.hostedZoneId,
+      // domainName: props.domainName,
+      // certificate: props.certificate,
       healthCheck: {
           command: [ "CMD-SHELL", "exit 0" ],
           timeout: cdk.Duration.minutes(10),

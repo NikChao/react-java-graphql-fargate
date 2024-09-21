@@ -1,7 +1,6 @@
 import './app.css'
 import {Coffee, useGetCoffeeQuery} from "./gql/generated/graphql.tsx";
 import {Spinner} from "./components/spinner/spinner.tsx";
-import Roulette from "./components/roulette/roulette.tsx";
 
 function toTitles(coffee?: (Coffee | null)[] | null) {
     return coffee
@@ -38,7 +37,6 @@ function App() {
               </div>
           </div>
         </div>
-        <Roulette initialVelocity={3} items={hotCoffee.concat(icedCoffee)} />
       </div>
   )
 }
