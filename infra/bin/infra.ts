@@ -3,6 +3,7 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { InfraStack } from '../lib/infra-stack';
 import {EcrStack} from "../lib/ecr-stack";
+import {FrontendSpaStack} from "../lib/frontend-spa-stack";
 
 const app = new cdk.App();
 const env = { account: "381491988501", region: "ap-southeast-2" };
@@ -12,3 +13,4 @@ new InfraStack(app, 'GqlInfraStack', {
     repository,
     env
 });
+new FrontendSpaStack(app, 'FrontendSpaStack', { env });
