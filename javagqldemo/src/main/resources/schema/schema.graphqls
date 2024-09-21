@@ -4,6 +4,10 @@ type Query {
 
 type Coffee {
     title: String
+    description: String
+    ingredients: [String]
+    image: String
+    id: ID
 }
 
 enum CoffeeType {
