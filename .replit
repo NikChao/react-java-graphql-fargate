@@ -1,0 +1,15 @@
+run = ["bash", "-c", """
+cd ./javagqldemo && ./gradlew bootRun --args='--server.port=8080' &
+cd ./webapp && yarn && export PORT=3000 && yarn dev &
+wait
+"""]
+modules = ["java-graalvm22.3", "nodejs-22"]
+
+[[ports]]
+localPort = 5173
+externalPort = 3000
+exposeLocalhost = true
+
+[[ports]]
+localPort = 8080
+externalPort = 8080
